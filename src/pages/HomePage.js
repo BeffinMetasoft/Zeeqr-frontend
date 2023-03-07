@@ -1,11 +1,14 @@
 import React from 'react'
+import Home from '../components/home/Home'
+import Navbar from '../components/navbar/Navbar'
 
 function HomePage() {
+  const props=[ "Create your card" , 'My saved cards' ]
   return (
     <div>
-         <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+         <Navbar props={props} page={'homepage'} key={props}/>
+         <Home/>
+         
     </div>
   )
 }
