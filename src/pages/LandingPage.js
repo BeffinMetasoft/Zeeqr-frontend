@@ -1,12 +1,11 @@
 import React from 'react'
 import Landing from '../components/landing/Landing'
-import Navbar from '../components/navbar/Navbar'
+import NavbarLanding from '../components/navbar/NavbarLanding'
 
 function LandingPage() {
-    const props=[ "Home" , 'How it works' , 'Features' , 'Pricing']
     return (
       <div>
-           <Navbar props={props} key={props}/>
+           <NavbarLanding/>
            <Landing/>
       </div>
     )

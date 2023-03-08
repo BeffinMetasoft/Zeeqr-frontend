@@ -1,11 +1,11 @@
 import React from 'react'
+import Navbar from '../components/navbar/Navbar'
 import SavedCards from '../components/savedCards/SavedCards'
 
 function SavedCardsPage() {
-  const props=[ "Create your card" , 'My saved cards' ]
   return (
     <div>
-      <Navbar props={props} page={'homepage'} key={props}/>
+      <Navbar />
       <SavedCards/>
     </div>
   )

@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Dropdown from '../dropdown/Dropdown';
 import logo from '../../assests/zeeqr1.png'
 
-function Navbar() {
+function NavbarLanding({ props, link, page }) {
   return (
     <div>
       <nav className="flex items-center justify-between flex-wrap bg-white text-black p-2 border-b-2 ">
@@ -18,16 +17,25 @@ function Navbar() {
         </div>
         <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
           <div className="text-xl lg:flex-grow text-center mx-5 ">
-            <Link to={'/home'} className="block mt-4 lg:inline-block font-semibold lg:mt-0 text-black  mr-5">
-              Create your card
+
+            <Link className="block mt-4 lg:inline-block font-semibold lg:mt-0 text-black  mr-5">
+            Home
             </Link>
-            <Link to={'/saved-cards'} className="block mt-4 lg:inline-block font-semibold lg:mt-0 text-black  mr-5">
-              My saved cards
+            <Link className="block mt-4 lg:inline-block font-semibold lg:mt-0 text-black  mr-5">
+            How it works
+            </Link>
+            <Link className="block mt-4 lg:inline-block font-semibold lg:mt-0 text-black  mr-5">
+            Features
+            </Link>
+            <Link className="block mt-4 lg:inline-block font-semibold lg:mt-0 text-black  mr-5">
+            Pricing
             </Link>
 
           </div>
 
-          <Dropdown />
+          <div>
+            <Link to={"/login"} className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white border-transparent  bg-black mt-4 lg:mt-0">Login</Link>
+          </div>
 
 
 
@@ -37,4 +45,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default NavbarLanding
