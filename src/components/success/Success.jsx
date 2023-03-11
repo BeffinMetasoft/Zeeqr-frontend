@@ -1,14 +1,17 @@
 import React from 'react'
-import Cards from '../cards/Cards'
 import { GrDeliver } from "react-icons/gr";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import Card from '../cards/Card';
 
 function Success() {
+  const location = useLocation()
+    const cardDetails = location.state?.data
+    console.log(cardDetails, 'update');
   return (
     <div>
          <h1 className='text-4xl text-center pt-[50px] font-bold uppercase'>Thank You</h1>
             <div className='pt-20 p-2'>
-                <Cards />
+                <Card data={cardDetails} />
                 <div className='flex justify-center mt-10'>
                 <GrDeliver size={80}/>
                 </div>

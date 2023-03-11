@@ -1,13 +1,53 @@
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import { userLogout } from '../../api/UserRequest';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Dropdown() {
+
+  const navigate = useNavigate()
+
+  const handleLogout = (() => {
+
+
+
+    confirmAlert({
+      title: 'Confirm to submit',
+      message: 'Are you sure to Logout.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: async () => {
+            try {
+              const refToken = await localStorage.getItem("refToken")
+              console.log(refToken, '12345');
+              const { data } = await userLogout(refToken)
+              console.log(data);
+              if (data.success) {
+                localStorage.removeItem('refToken')
+                // cookies.remove('accessToken')
+                navigate('/login')
+              }
+            } catch (error) {
+              console.log(error.response.data);
+            }
+          }
+        },
+        {
+          label: 'No',
+        }
+      ]
+    });
+
+  })
+
   return (
     <Menu as="div" className="relative inline-block text-left mr-5">
       <div>
@@ -37,23 +77,24 @@ export default function Dropdown() {
                     'block px-2 py-2 text-sm'
                   )}
                 >
-                 Profile
+                  Profile
                 </Link>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <Link 
+                <button
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-2 py-2 text-sm'
                   )}
+                  onClick={handleLogout}
                 >
-                Logout
-                </Link>
+                  Logout
+                </button>
               )}
             </Menu.Item>
-           
+
             {/* <form method="POST" action="/login">
               <Menu.Item>
                 {({ active }) => (

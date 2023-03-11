@@ -24,6 +24,9 @@ function Navbar() {
             <Link to={'/saved-cards'} className="block mt-4 lg:inline-block font-semibold lg:mt-0 text-black  mr-5">
               My saved cards
             </Link>
+            <Link to={'/booked-cards'} className="block mt-4 lg:inline-block font-semibold lg:mt-0 text-black  mr-5">
+              My Ordered cards
+            </Link>
 
           </div>
 

@@ -72,7 +72,7 @@ function Login() {
             <div className={`w-full h-screen flex `}>
                 <div className='grid grid-cols-1 md:grid-cols-2 m-auto h-[550px] shadow-lg shadow-gray-600 sm:max-w-[900px]'>
                     <div className=' w-full text-center h-[550px] hidden md:block' style={{ backgroundImage: `url(${landingImg})` }}>
-                        <img src={banner} alt="" srcset=""  />
+                        <img src={banner} alt="" srcset="" />
                         <h1 className='text-5xl m-5 pt-40 z-100 font-bold  text-slate-200'>ZeeQR</h1>
                         <p className='text-slate-100 font-bold'>Makes Your Business card Simple...</p>
                     </div>

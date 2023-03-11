@@ -9,9 +9,9 @@ import {FormControl,FormErrorMessage,FormLabel} from '@chakra-ui/react'
 function FormFields({error,children,label}) {
   return (
     <div>
-         <FormControl isInvalid={Boolean(error)}>
+         <FormControl isInvalid={Boolean(error)  }>
             <FormLabel>{label}</FormLabel>
-            {children}
+            {children }
             {error && <FormErrorMessage>{error}</FormErrorMessage>}
         </FormControl>
     </div>

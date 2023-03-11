@@ -1,11 +1,45 @@
+import './AlertCSS.css';
 import React from 'react'
 import logo from '../../assests/zeeqr.png'
 import QR from '../../assests/QR_code.png'
 import { FaRegEdit } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai";
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import { deleteSavedCard } from '../../api/UserRequest';
 
 
-function CardSaved() {
+function CardSaved({card,setDeletes}) {
+    const handleEdit=(id)=>{
+        console.log(id,'edit');
+    }
+    const handleDelete=(id)=>{
+        confirmAlert({
+            title: 'Confirm to submit',
+            message: 'Are you want to delete this card.',
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: async() => {
+                       try {
+                        console.log(id,'delete');
+                        const {data}= await deleteSavedCard(id)
+                        if(data.success){
+                            setDeletes(Date.now())
+                        }
+                        console.log(data,'deleted');
+                       } catch (error) {
+                        console.log(error);
+                       }
+                    }
+                },
+                {
+                    label: 'No',
+                }
+            ]
+        });
+       
+    }
     return (
         <div>
             <div className='flex justify-center'>
@@ -21,8 +55,8 @@ function CardSaved() {
                         </div>
                         <div className="flex justify-start gap-x-2">
                             <div className='flex flex-col  justify-center'>
-                                <h3 className="text-2xl font-bold text-black">ZeeQR</h3>
-                                <span className="text-xs text-black">RENNOVATING THE FUTURE</span>
+                                <h3 className="text-2xl font-bold text-black">{card.name}</h3>
+                                <span className="text-xs text-black">{card.companyName}</span>
                             </div>
                         </div>
 
@@ -33,9 +67,9 @@ function CardSaved() {
             <div className='flex justify-around mt-3'>
                 <p>1/03/2023</p>
                 <div className='flex items-center' >
-                <button className='mx-2'>Edit</button>
+                <button className='mx-2' onClick={()=>handleEdit(card._id)} >Edit</button>
                 <FaRegEdit/>
-                <button className='mx-2'>Delete</button>
+                <button className='mx-2' onClick={()=>handleDelete(card._id)} >Delete</button>
                 <AiOutlineDelete size={20}/>
                 </div>
 

@@ -9,6 +9,8 @@ import SuccessPage from './pages/SuccessPage';
 import ProfilePage from './pages/ProfilePage';
 import SavedCardsPage from './pages/SavedCardsPage';
 import BookedCardsPage from './pages/BookedCardsPage';
+import CardDetailsViewPage from './pages/CardDetailsViewPage';
+import Error404Page from './pages/Error404Page';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path='/profile' element={<ProfilePage/>} />
         <Route path='/saved-cards' element={<SavedCardsPage/>} />
         <Route path='/booked-cards' element={<BookedCardsPage/>} />
+        <Route path='/detail-view/:id' element={<CardDetailsViewPage/>} />
+        <Route path='/error-404' element={<Error404Page/>} />
       </Routes>
     </Router>
   );
