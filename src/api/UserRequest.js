@@ -16,7 +16,7 @@ export const getBookedCards = () => axios.get('/getcreatedCard')
 
 export const userDetails = () => axios.get('/profile')
 
-export const userDetailsUpdate = (profile) => axios.put('/profile/update',profile)
+export const userDetailsUpdate = (profile) => axios.put('/update',profile)
 
 export const deleteSavedCard = (cardId) => axios.delete(`/removeCard/${cardId}`)
 
